@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  
+  before_action :find_book, only: [:show]
 
   def index
     @books = Book.all
@@ -6,7 +8,6 @@ class BooksController < ApplicationController
 
   def show
     #renders users/show view
-    @user = Book.find(params[:id])
   end
 
   def new
@@ -33,6 +34,10 @@ class BooksController < ApplicationController
 
 
   private
+
+  def find_book 
+    @book = Book.find(params[:id])
+  end
 
   def book_params
     params.require(:book).permit(:title, :author_name, genre_ids: [])
