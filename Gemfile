@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 
 ###gems we are adding###
 gem 'bcrypt'
+gem 'activerecord-reset-pk-sequence'
 ###
 
 # Reduces boot times through caching; required in config/boot.rb
