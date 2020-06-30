@@ -11,8 +11,6 @@
 
 </div>
 
-
-<br>
 <% if logged_in? %>
 <label>Your clubs:</label>
 <ul>
@@ -20,4 +18,14 @@
 <li><%= link_to club.name, club_path(club)%> </li>
 <%end%>
 </ul>
+<%= link_to "Browse Book Clubs", clubs_path%>
+<%else%>
+
+<label>All clubs:</label>
+<ul>
+<% @clubs.each do |club| %>
+<li><%= link_to club.name, club_path(club)%> </li>
 <%end%>
+</ul>
+<%end%>
+
