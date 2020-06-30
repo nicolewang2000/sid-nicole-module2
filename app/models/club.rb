@@ -2,7 +2,7 @@ class Club < ApplicationRecord
   belongs_to :book
   has_many :club_memberships
   has_many :users, through: :club_memberships
-  # belongs_to :leader, :class_name => "User"
+  belongs_to :leader, :class_name => "User"
   
   validates :name, presence: true
   validates :book_id, presence: true
