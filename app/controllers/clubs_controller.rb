@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
     
     before_action :find_club, only: [:show, :edit, :update, :delete]
+    before_action :authenticated, only: [:new, :create, :edit, :update, :destroy]
 
     def index
         @clubs = Club.all
@@ -38,10 +39,10 @@ class ClubsController < ApplicationController
 
     private 
     def club_params
-        params.require(:club).permit(:name, :description, :book_id)
+      params.require(:club).permit(:name, :description, :book_id)
     end
 
     def find_club
-        Club.find(params[:id])
+      Club.find(params[:id])
     end
 end 
