@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_many :books, through: :clubs
   # has_many :clubs, :foreign_key => 'leader_id'
 
-
   validates :username, uniqueness: true
   validates :username, presence: true
   validates :first_name, presence: true
@@ -22,5 +21,6 @@ class User < ApplicationRecord
   def leads_name
     leads.map{|club|club.name} #returns an array of club names in which a user leads
   end
+
 
 end
