@@ -8,6 +8,7 @@ class ClubsController < ApplicationController
     end 
 
     def show
+      @club = find_club
     end
     
     def new
