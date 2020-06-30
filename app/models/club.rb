@@ -2,8 +2,7 @@ class Club < ApplicationRecord
   belongs_to :book
   has_many :club_memberships
   has_many :users, through: :club_memberships
-
-
+  belongs_to :leader, :class_name => "User"
   
   def find_membership(user_id)
     ClubMembership.find_by(user_id: user_id, club_id: self.id)
