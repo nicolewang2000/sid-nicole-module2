@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
     
     def new
       @club = Club.new
+      @books = Book.all
     end
 
     def edit

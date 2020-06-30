@@ -3,5 +3,12 @@
     <%=f.text_field :name%>
     <%=f.label :description%>
     <%=f.text_area :description%>
+    <%= f.fields_for :book do |b| %>
+            
+            <%= b.label :book_title %>
+            <%= b.text_field :title %>
+            <%= b.label :author_name %>
+            <%= b.text_field :author_name %>
+	<% end %>
     <%=f.submit%>
 <%end%>
