@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -7,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     #renders users/show view
+    @user = User.find(params[:id])
   end
 
   def new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     #doesn't render anything
     user = User.create(user_params)
-    redirect_to user_path(user)
+    redirect_to '/'
   end
 
   ### if we have time, we can implement user changes to their name/username
@@ -38,7 +38,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation)
   end
 
-  def find_user
-    @user = User.find(session[:user_id])
-  end 
 end
