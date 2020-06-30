@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     #doesn't render anything
     user = User.create(user_params)
-    redirect_to user_path(user)
+    redirect_to '/'
   end
 
   ### if we have time, we can implement user changes to their name/username
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name)
+    params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation)
   end
 
 end

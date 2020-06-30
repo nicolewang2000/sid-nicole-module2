@@ -38,13 +38,16 @@ g2 = Genre.create(name: "Biography")
 g3 = Genre.create(name: "Non-Fiction")
 g4 = Genre.create(name: "Fantasy")
 
-c1 = Club.create(name: "Mindless Reading", description: "For everyone bored during quarantine", book_id: b2.id)
-c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", book_id: b1.id)
+c1 = Club.create(name: "Mindless Reading", description: "For everyone bored during quarantine", book_id: b2.id, leader_id: u1.id)
+c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", book_id: b1.id, leader_id: u10.id)
+c3 = Club.create(name: "Books on Empowerment", description: "Anything self-help books", book_id: b5.id, leader_id: u10.id)
+
 
 c1.add_user(1)
 c1.add_user(2)
 c1.add_user(3)
 c1.add_user(4)
+c2.add_user(1)
 c2.add_user(4)
 c2.add_user(5)
 c2.add_user(6)

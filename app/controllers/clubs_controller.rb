@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
     
     before_action :find_club, only: [:show, :edit, :update, :delete]
+    before_action :authenticated, only: [:new, :create, :edit, :update, :destroy]
 
     def index
         @clubs = Club.all
@@ -13,16 +14,24 @@ class ClubsController < ApplicationController
       @club = Club.new
     end
 
-    def create
-      Club.create(club_params)
+    def edit
     end
 
-    def edit
+    def create
+      @club = Club.new(club_params)
+      if @club.save
+        redirect_to club_path(@club)
+      else
+        render :new
+      end
     end
     
     def update
-        @club.update(club_params)
-        redirect_to club_path(@club)
+        if @club.update(club_params)
+            redirect_to club_path(@club)
+        else 
+            render :edit
+        end 
     end
 
     def delete
@@ -30,10 +39,10 @@ class ClubsController < ApplicationController
 
     private 
     def club_params
-        params.require(:club).permit(:name, :description, :book_id)
+      params.require(:club).permit(:name, :description, :book_id)
     end
 
     def find_club
-        Club.find(params[:id])
+      Club.find(params[:id])
     end
 end 
