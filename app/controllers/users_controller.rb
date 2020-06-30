@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def create
     #doesn't render anything
     user = User.create(user_params)
-    redirect_to user_path(user)
+    redirect_to root_path
   end
 
   ### if we have time, we can implement user changes to their name/username

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # resources :clubs
   # root 'sessions#new'
 
+  get '/', to: "home#home"
+
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
   
