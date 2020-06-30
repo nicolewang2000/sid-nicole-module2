@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -6,7 +7,6 @@ class UsersController < ApplicationController
 
   def show
     #renders users/show view
-    @user = User.find(params[:id])
   end
 
   def new
@@ -35,7 +35,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name)
+    params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation)
   end
 
+  def find_user
+    @user = User.find(session[:user_id])
+  end 
 end

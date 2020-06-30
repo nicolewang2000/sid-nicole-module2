@@ -13,16 +13,24 @@ class ClubsController < ApplicationController
       @club = Club.new
     end
 
-    def create
-      Club.create(club_params)
+    def edit
     end
 
-    def edit
+    def create
+      @club = Club.new(club_params)
+      if @club.save
+        redirect_to club_path(@club)
+      else
+        render :new
+      end
     end
     
     def update
-        @club.update(club_params)
-        redirect_to club_path(@club)
+        if @club.update(club_params)
+            redirect_to club_path(@club)
+        else 
+            render :edit
+        end 
     end
 
     def delete
