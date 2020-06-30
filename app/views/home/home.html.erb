@@ -1,11 +1,11 @@
 <h1>Book Club App Home Page</h1>
 
 <% if logged_in? %>
-<p>Welcome <%= @user.full_name %>, you are logged in!<br>
+<p>Welcome <%= @user.full_name %>, you are logged in!
 <%= form_with model: @user, url: '/logout', method: 'delete' do |f| %>
 <%= f.submit "Log Out"%>
 <% end %>
 </p>
 <% else %>
-<p>You are not logged in!</p>
+<p>You are not logged in! <%=link_to "Log In", login_path%></p>
 <%end%>
