@@ -9,3 +9,12 @@
 <% else %>
 <p>You are not logged in! <%=link_to "Log In", login_path%></p>
 <%end%>
+<br>
+<% if logged_in? %>
+<label>Your clubs:</label>
+<ul>
+<% @user.clubs.each do |club| %>
+<li><%= link_to club.name, club_path(club)%> </li>
+<%end%>
+</ul>
+<%end%>
