@@ -9,12 +9,14 @@ class ClubsController < ApplicationController
 
     def show
       @club = find_club
-      @user = User.find(session[:user_id])
+      if logged_in?
+        @user = User.find(session[:user_id])
 
-      if @club.find_membership(@user.id)
-        @membership = @club.find_membership(@user.id)
-      else
-        @membership = ClubMembership.new
+        if @club.find_membership(@user.id)
+          @membership = @club.find_membership(@user.id)
+        else
+          @membership = ClubMembership.new
+        end
       end
     end
     
