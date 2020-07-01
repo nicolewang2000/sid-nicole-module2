@@ -16,16 +16,16 @@ Club.reset_pk_sequence
 ClubMembership.destroy_all
 ClubMembership.reset_pk_sequence
 
-u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang")
-u2 = User.create(username: "ac19", first_name: "Annabeth", last_name: "Chase")
-u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang")
-u4 = User.create(username: "coffeedad", first_name: "Mac", last_name: "Donald")
-u5 = User.create(username: "lightning", first_name: "Harry", last_name: "Potter")
-u6 = User.create(username: "zoehart", first_name: "Zoe", last_name: "Hart")
-u7 = User.create(username: "wadekinsella", first_name: "Wade", last_name: "Kinsella")
-u8 = User.create(username: "ts1989", first_name: "Taylor", last_name: "Swift")
-u9 = User.create(username: "demigod", first_name: "Percy", last_name: "Jackson")
-u10 = User.create(username: "siddo", first_name: "Sid", last_name: "Hirschman")
+u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('nicolepassword'))
+u2 = User.create(username: "ac19", first_name: "Annabeth", last_name: "Chase", password_digest: BCrypt::Password.create('apassword123'))
+u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('bernicepassword'))
+u4 = User.create(username: "coffeedad", first_name: "Mac", last_name: "Donald", password_digest: BCrypt::Password.create('mmmcoffee'))
+u5 = User.create(username: "lightning", first_name: "Harry", last_name: "Potter", password_digest: BCrypt::Password.create('theboywholived'))
+u6 = User.create(username: "zoehart", first_name: "Zoe", last_name: "Hart", password_digest: BCrypt::Password.create('6xtremenacho6'))
+u7 = User.create(username: "wadekinsella", first_name: "Wade", last_name: "Kinsella", password_digest: BCrypt::Password.create('94070'))
+u8 = User.create(username: "ts1989", first_name: "Taylor", last_name: "Swift", password_digest: BCrypt::Password.create('tswift1989'))
+u9 = User.create(username: "demigod", first_name: "Percy", last_name: "Jackson", password_digest: BCrypt::Password.create('lightningthief'))
+u10 = User.create(username: "siddo", first_name: "Sid", last_name: "Hirschman", password_digest: BCrypt::Password.create('sidpassword'))
 
 b1 = Book.create(title: "Harry Potter and the Order of the Phoenix", author_name: "J.K. Rowling", img_url: "https://images-na.ssl-images-amazon.com/images/I/91TpLHDnuFL.jpg")
 b2 = Book.create(title: "The Hate You Give", author_name: "Angie Thomas", img_url: "https://images-na.ssl-images-amazon.com/images/I/71HZHHDbarL.jpg")
