@@ -1,10 +1,11 @@
 <h1><%= @club.name %></h1>
+<h2><%= @club.description%></h2>
 
 <% if logged_in? %>
 
   <% if @club.leader_id == @user.id %>
 
-    <p>This is your club!</p>
+    <%= link_to "Edit club", edit_club_path(@club)%>
 
   <%elsif @club.find_membership(@user.id)%>
 
