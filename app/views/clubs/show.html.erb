@@ -23,9 +23,13 @@
 <%= link_to "Log in or sign up to join this club", login_path%>
 <% end %>
 <br>
+<label>Leader:</label>
+<%=link_to @club.leader.full_name, user_path(@club.leader)%> <br>
+
+
 <label>Members:</label>
-<ul>
-<% @club.users.each do |user| %>
-<li><%=link_to user.full_name, user_path(user)%></li>
-<%end%>
+    <ul>
+        <% @club.users.each do |user| %>
+            <li><%=link_to user.full_name, user_path(user)%></li>
+    <%end%>
 </ul>
