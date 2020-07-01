@@ -15,7 +15,9 @@
 <label>Your clubs are currently reading:</label>
 <ul>
 <% @user.clubs.each do |club| %>
-<li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
+
+    <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
+
 <%end%>
 </ul>
 

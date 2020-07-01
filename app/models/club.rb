@@ -4,6 +4,7 @@ class Club < ApplicationRecord
   has_many :users, through: :club_memberships
   belongs_to :leader, :class_name => "User"
   accepts_nested_attributes_for :book
+  has_many :comments
 
   validates :name, presence: true
   # validates :book_id, presence: true

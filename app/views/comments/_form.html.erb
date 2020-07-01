@@ -1,0 +1,7 @@
+<%= form_for([@club, @club.comments.build]) do |f| %>
+    <%= f.hidden_field :user_id, value: session[:user_id]%>
+    <%= f.hidden_field :club_id, value: session[:club_id]%>
+    <%= f.label :content%>
+    <%= f.text_area :content%> <br>
+    <%= f.submit 'Leave a reply'%>
+<%end%>
