@@ -2,7 +2,11 @@
 
 <% if logged_in? %>
 
-  <%if @club.find_membership(@user.id)%>
+  <% if @club.leader_id == @user.id %>
+
+    <p>This is your club!</p>
+
+  <%elsif @club.find_membership(@user.id)%>
 
     <%= form_for @membership do |f| %>
       <%= f.hidden_field :club_id, value: @club.id%>
