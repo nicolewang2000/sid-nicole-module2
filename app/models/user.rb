@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  has_secure_password  
+  # has_secure_password  
   has_many :club_memberships
   has_many :clubs, through: :club_memberships
   has_many :books, through: :clubs
-  # has_many :lead_clubs, through: :leader_id, source: :clubs
+  has_many :lead_clubs, :class_name => "Club", foreign_key: 'leader_id'
 
   validates :username, uniqueness: true
   validates :username, presence: true
@@ -15,12 +15,11 @@ class User < ApplicationRecord
   end
   
   # def leads
-  #   Club.all.select{|club|club.leader_id == self.id}  #returns an array of clubs in which a user leads (is a leader)
+  #   Club.all.select{|club|club.leader_id == self.id}
   # end
 
-  # def leads_name
-  #   leads.map{|club|club.name} #returns an array of club names in which a user leads
-  # end
-
+  def lead_names
+    lead_clubs.map{|club|club.name} 
+  end
 
 end
