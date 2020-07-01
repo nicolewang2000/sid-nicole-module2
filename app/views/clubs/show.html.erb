@@ -1,4 +1,5 @@
 <h1><%= @club.name %></h1>
+<h2><%= @club.description%></h2>
 
 <label>Current Book:</label>
 <%=@club.book.title%> by <%=@club.book.author_name%> <br>
@@ -24,6 +25,12 @@
   <%if @club.leader_id == session[:user_id]%>
       <%= link_to "Edit", edit_club_path(@club) %>
  
+
+
+  <% if @club.leader_id == @user.id %>
+
+    <%= link_to "Edit club", edit_club_path(@club)%>
+
 
   <%elsif @club.find_membership(@user.id)%>
 
@@ -57,3 +64,15 @@
 
 
 <!--<%= link_to '<button type="button">Edit</button>'.html_safe, edit_club_path(@club) %>--> 
+
+<label>Members:</label>
+    <ul>
+        <% @club.users.each do |user| %>
+            <li><%=link_to user.full_name, user_path(user)%></li>
+    <%end%>
+</ul>
+
+
+<label>Current book: </label><%= @club.book.title %> by <%= @club.book.author_name %>
+<br>
+<img src=<%=@club.book.img_url%>>
