@@ -1,19 +1,20 @@
 <h1><%=@user.full_name%></h1>
 
-<label>Username:</label>
-<%=@user.username%>
+<h3>Username: <%=@user.username%></h3>
 
 <br>
 
 <label>Leader of:</label>
+<ul>
 <%@user.lead_clubs.each do |club|%>
-    <%=link_to club.name, club_path(club)%><br>
+    <li><%=link_to club.name, club_path(club)%></li>
 <%end%>
+</ul>
 
 <br>
 
-<label> Member of </label>
-<table>
+<label> Member of: </label>
+<!--<table>
     <tr>
         <th>Club Name</th>
         <th>Currently Reading</th>
@@ -24,4 +25,9 @@
         <td><%=club.book.title%></td>
     </tr>
     <%end%>
-</table>
+</table>-->
+<ul>
+<%@user.clubs.each do |club|%>
+    <li><%=link_to club.name, club_path(club)%></li>
+<%end%>
+</ul>

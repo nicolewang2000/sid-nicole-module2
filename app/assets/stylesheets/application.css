@@ -17,3 +17,33 @@
  ul {
   list-style-type: square;
 }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1px;
+
+  }
+
+  nav {  
+    width: 80%; 
+    height: 38px; 
+  }
+
+  nav a {    
+    display: block;  
+    float: left;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  label {
+    font-size: 14pt
+
+  }
+
+  button {
+    display: inline;
+  }

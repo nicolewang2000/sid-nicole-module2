@@ -1,4 +1,4 @@
-<%= comment.user.full_name %> : <%= comment.content %> <br> (<%= time_ago_in_words(comment.created_at)%>)
+<%= comment.user.full_name %> : <%= comment.content %> <br> (<%= time_ago_in_words(comment.created_at)%> ago)
 <!--
 <% if comment.user_id == session[:user_id]%>
     <%= link_to 'Delete', [comment.club, comment], method: :delete, data: { confirm: "Are you sure?" }%>
