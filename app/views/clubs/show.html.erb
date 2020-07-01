@@ -1,5 +1,6 @@
 <h1><%= @club.name %></h1>
 
+
 <% if logged_in? %>
 
   <%if @club.find_membership(@user.id)%>
@@ -23,6 +24,11 @@
 <%= link_to "Log in or sign up to join this club", login_path%>
 <% end %>
 <br>
+
+<label>Current Book:</label>
+<%=@club.book.title%> by <%=@club.book.author_name%> <br>
+
+
 <label>Leader:</label>
 <%=link_to @club.leader.full_name, user_path(@club.leader)%> <br>
 
@@ -33,3 +39,5 @@
             <li><%=link_to user.full_name, user_path(user)%></li>
     <%end%>
 </ul>
+
+<!--<%= link_to '<button type="button">Edit</button>'.html_safe, edit_club_path(@club) %>--> 
