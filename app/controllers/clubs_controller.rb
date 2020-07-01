@@ -8,12 +8,11 @@ class ClubsController < ApplicationController
     end 
 
     def show
-      @club = find_club
     end
     
     def new
       @club = Club.new
-      @books = Book.all
+      @club.build_book
     end
 
     def edit
@@ -29,22 +28,23 @@ class ClubsController < ApplicationController
     end
     
     def update
-        if @club.update(club_params)
-            redirect_to club_path(@club)
-        else 
-            render :edit
-        end 
+      if @club.update(club_params)
+        redirect_to club_path(@club)
+      else 
+        render :edit
+    end 
     end
 
     def delete
     end
 
     private 
+
     def club_params
-      params.require(:club).permit(:name, :description, :book_id)
+      params.require(:club).permit(:name, :description, :leader_id, book_attributes: [:title, :author_name, :img_url])
     end
 
     def find_club
-      Club.find(params[:id])
+      @club = Club.find(params[:id])
     end
 end 
