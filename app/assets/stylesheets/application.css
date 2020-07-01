@@ -28,8 +28,6 @@
   nav {  
     width: 80%; 
     height: 38px; 
-    
-
   }
 
   nav a {    
@@ -39,4 +37,13 @@
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+  }
+
+  label {
+    font-size: 14pt
+
+  }
+
+  button {
+    display: inline;
   }
