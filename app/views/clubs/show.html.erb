@@ -38,3 +38,7 @@
             <li><%=link_to user.full_name, user_path(user)%></li>
     <%end%>
 </ul>
+
+<label>Current book: </label><%= @club.book.title %> by <%= @club.book.author_name %>
+<br>
+<img src=<%=@club.book.img_url%>>
