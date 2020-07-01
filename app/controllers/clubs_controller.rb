@@ -34,6 +34,7 @@ class ClubsController < ApplicationController
     def create
       @club = Club.new(club_params)
       if @club.save
+        @club.add_user(session[:user_id])
         redirect_to club_path(@club)
       else
         render :new
