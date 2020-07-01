@@ -4,6 +4,9 @@ class ClubsController < ApplicationController
     before_action :authenticated, only: [:new, :create, :edit, :update, :destroy]
 
     def index
+      if logged_in?
+        @user = User.find(session[:user_id])
+      end
         @clubs = Club.all
     end 
 
