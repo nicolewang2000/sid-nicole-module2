@@ -1,17 +1,17 @@
 
 <%=form_for @club do |f|%>
-    <%=f.label :name%>
-    <%=f.text_field :name%>
-    <%=f.label :description%>
-    <%=f.text_area :description%>
+    <%=f.label :name%><br>
+    <%=f.text_field :name%><br>
+    <%=f.label :description%><br>
+    <%=f.text_area :description%><br>
     <%=f.hidden_field :leader_id, value: session[:user_id]%>
     <%=f.fields_for :book do |b| %>
-            <%= b.label :book_title %>
-            <%= b.text_field :title %>
-            <%= b.label :author_name %>
-            <%= b.text_field :author_name %>
-            <%= b.label :img_url %>
-            <%= b.text_field :img_url %>
+            <%= b.label :book_title %><br>
+            <%= b.text_field :title %><br>
+            <%= b.label :author_name %><br>
+            <%= b.text_field :author_name %><br>
+            <%= b.label :img_url %><br>
+            <%= b.text_field :img_url %><br>
 	<%end%>
     <%=f.submit%>
 <%end%>

@@ -15,12 +15,14 @@ class User < ApplicationRecord
     (self.first_name + " " + self.last_name).titleize
   end
   
-  # def leads
-  #   Club.all.select{|club|club.leader_id == self.id}
-  # end
+  def leads
+    Club.all.select{|club|club.leader_id == self.id}
+  end
 
   def lead_names
     lead_clubs.map{|club|club.name} 
   end
+
+  
 
 end
