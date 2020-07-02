@@ -7,7 +7,7 @@ class Book < ApplicationRecord
     Book.find_or_create_by(
         title: GoogleBooks.search(book).first.title, 
         author_name: GoogleBooks.search(book).first.authors,
-        img_url: GoogleBooks.search(book).first.image_link(:zoom => 1)
+        img_url: GoogleBooks.search(book).first.image_link
     )
   end
 
