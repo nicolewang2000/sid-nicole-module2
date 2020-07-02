@@ -4,20 +4,22 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def new
+    @user = User.new
+  end
+
   def show
-    #renders users/show view
     @user = User.find(params[:id])
   end
 
-  def new
-    @user = User.new
-    #renders users/new view
-  end
-
   def create
-    #doesn't render anything
-    user = User.create(user_params)
-    redirect_to '/'
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to '/login'
+    else 
+      flash[:errors]= @user.errors.full_messages
+    render :new
+    end
   end
 
   ### if we have time, we can implement user changes to their name/username
@@ -35,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation)
+    params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation, :profile_pic)
   end
 
 end
