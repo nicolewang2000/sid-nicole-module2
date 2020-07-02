@@ -25,6 +25,7 @@ class ClubsController < ApplicationController
     
     def new
       @club = Club.new
+      @genres = Genre.all
       @club.build_book
     end
 

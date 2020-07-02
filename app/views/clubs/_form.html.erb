@@ -10,8 +10,14 @@
             <%= b.text_field :title %><br>
             <%= b.label :author_name %><br>
             <%= b.text_field :author_name %><br>
+
+            
             <%= b.label "Direct URL to book cover image" %><br>
-            <%= b.text_field :img_url %><br><br>
+            <%= b.text_field :img_url %><br>
+
+            <%= b.label :genres %><br>
+            <%= b.collection_check_boxes :genre_ids, @genres, :id, :name %><br>
+
 	<%end%>
     <%=f.submit%>
 <%end%>

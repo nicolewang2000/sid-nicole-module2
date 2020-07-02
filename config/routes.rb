@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'sessions#new'
 
   get '/', to: "home#home"
+  get "/analytics", to: "home#analytics"
 
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   
   get "/logout", to: "sessions#destroy"
   delete "/logout", to: "sessions#destroy"
+
+
 
   resources :users, only: [:show, :new, :create, :edit, :update]
   

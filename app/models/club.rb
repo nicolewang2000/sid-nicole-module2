@@ -24,4 +24,12 @@ class Club < ApplicationRecord
     membership.destroy
   end
 
+  def number_of_users
+    self.users.count
+  end
+
+  def self.avg_num_of_users
+    Club.all.map{|club| club.number_of_users}.sum / Club.all.count
+  end
+
 end
