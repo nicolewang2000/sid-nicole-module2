@@ -16,9 +16,9 @@ Club.reset_pk_sequence
 ClubMembership.destroy_all
 ClubMembership.reset_pk_sequence
 
-u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('nicolepassword'))
+u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('iam19'))
 u2 = User.create(username: "ac19", first_name: "Annabeth", last_name: "Chase", password_digest: BCrypt::Password.create('apassword123'))
-u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('bernicepassword'))
+u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('password'))
 u4 = User.create(username: "coffeedad", first_name: "Mac", last_name: "Donald", password_digest: BCrypt::Password.create('mmmcoffee'))
 u5 = User.create(username: "lightning", first_name: "Harry", last_name: "Potter", password_digest: BCrypt::Password.create('theboywholived'))
 u6 = User.create(username: "zoehart", first_name: "Zoe", last_name: "Hart", password_digest: BCrypt::Password.create('6xtremenacho6'))
