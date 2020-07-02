@@ -44,6 +44,8 @@ class ClubsController < ApplicationController
     end
     
     def update
+      @club.book.destroy
+      @club.build_book
       if @club.update(club_params)
         redirect_to club_path(@club)
       else 
