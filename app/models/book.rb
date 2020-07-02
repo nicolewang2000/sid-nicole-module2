@@ -10,7 +10,7 @@ class Book < ApplicationRecord
         img_url: GoogleBooks.search(keyword).first.image_link
     )
   end
-
+  
   def self.all_img_urls
     Book.all.map{|book| book.img_url if book.img_url}
   end
