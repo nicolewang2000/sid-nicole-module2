@@ -6,6 +6,7 @@
     </ul>
 <%end%>
 
+<div class="bg-img">
 <%= form_for @user do |f| %>
     <%=f.label :first_name%>
     <%=f.text_field :first_name%><br>
@@ -19,3 +20,4 @@
     <%=f.password_field :password_confirmation%><br>
     <%=f.submit%>
 <% end %>
+</div>
