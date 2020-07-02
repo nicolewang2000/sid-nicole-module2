@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show, :edit, :update]
 
   def index
     @users = User.all
@@ -9,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def create
@@ -23,18 +23,24 @@ class UsersController < ApplicationController
   end
 
   ### if we have time, we can implement user changes to their name/username
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
+  def edit
+  end
 
-  # def update
-  #   @user = User.find(params[:id])
-  #   @user.update(user_params)
-  #   redirect_to user_path(@user)
-  # end
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else 
+      flash[:errors]= @user.errors.full_messages
+      render :edit
+    end
+  end
 
 
   private
+
+  def find_user
+    @user = User.find(params[:id])
+  end 
 
   def user_params
     params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation, :profile_pic)
