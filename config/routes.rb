@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root 'sessions#new'
 
   get '/', to: "home#home"
+  get '/analytics', to: "home#analytics"
 
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"

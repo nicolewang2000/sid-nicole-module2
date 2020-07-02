@@ -11,6 +11,10 @@ class Book < ApplicationRecord
     )
   end
 
+  def self.all_img_urls
+    Book.all.map{|book| book.img_url if book.img_url}
+  end
+
   # def book_hash
 
   #   Google.search(keyword)

@@ -37,13 +37,11 @@
     <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%>
 <%else%>
 <!-- Slide Show -->
+
 <section>
-  <img class="mySlides" src="https://wallpaperaccess.com/full/1761201.jpg"
-  style="width:90%">
-  <img class="mySlides" src="https://www.locogringo.com/sites/default/files/blog-teaser/shutterstock_643434907.jpg"
-  style="width:90%">
-  <img class="mySlides" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-  style="width:90%">
+  <% @books.all_img_urls.each do |img_url|%>
+  <img class="mySlides" src=<%= img_url%> style="width:200px">
+  <%end%>
 </section>
 
 <script>
