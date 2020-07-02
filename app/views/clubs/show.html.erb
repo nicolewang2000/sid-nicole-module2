@@ -12,15 +12,12 @@
 
 
 
-
-
-
 <% if logged_in? %>
   
   <%if @club.leader_id == session[:user_id]%>
       <!--<%= link_to "Edit", edit_club_path(@club) %>-->
       <%= link_to '<button type="button">Edit club</button>'.html_safe, edit_club_path(@club) %> 
-
+      <!--<%= link_to '<button type="button">Delete club</button>'.html_safe, club_path(@club), method: :delete %>-->
 
   <%elsif @club.find_membership(@user.id)%>
 
