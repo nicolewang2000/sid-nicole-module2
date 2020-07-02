@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   def show
     #renders users/show view
   end
-
+  
   def new
     @book = Book.new
     #renders books/new view

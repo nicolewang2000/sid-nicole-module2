@@ -16,9 +16,9 @@ Club.reset_pk_sequence
 ClubMembership.destroy_all
 ClubMembership.reset_pk_sequence
 
-u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('nicolepassword'))
+u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('iam19'))
 u2 = User.create(username: "ac19", first_name: "Annabeth", last_name: "Chase", password_digest: BCrypt::Password.create('apassword123'))
-u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('bernicepassword'))
+u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('password'))
 u4 = User.create(username: "coffeedad", first_name: "Mac", last_name: "Donald", password_digest: BCrypt::Password.create('mmmcoffee'))
 u5 = User.create(username: "lightning", first_name: "Harry", last_name: "Potter", password_digest: BCrypt::Password.create('theboywholived'))
 u6 = User.create(username: "zoehart", first_name: "Zoe", last_name: "Hart", password_digest: BCrypt::Password.create('6xtremenacho6'))
@@ -26,6 +26,9 @@ u7 = User.create(username: "wadekinsella", first_name: "Wade", last_name: "Kinse
 u8 = User.create(username: "ts1989", first_name: "Taylor", last_name: "Swift", password_digest: BCrypt::Password.create('tswift1989'))
 u9 = User.create(username: "demigod", first_name: "Percy", last_name: "Jackson", password_digest: BCrypt::Password.create('lightningthief'))
 u10 = User.create(username: "siddo", first_name: "Sid", last_name: "Hirschman", password_digest: BCrypt::Password.create('sidpassword'))
+u11 = User.create(username: "ruby", first_name: "Ruby", last_name: "Rails", password_digest: BCrypt::Password.create('coding'))
+u11 = User.create(username: "prybabies", first_name: "Rails", last_name: "Ruby", password_digest: BCrypt::Password.create('flatiron'))
+
 
 b1 = Book.create(title: "Harry Potter and the Order of the Phoenix", author_name: "J.K. Rowling", img_url: "https://images-na.ssl-images-amazon.com/images/I/91TpLHDnuFL.jpg")
 b2 = Book.create(title: "The Hate You Give", author_name: "Angie Thomas", img_url: "https://images-na.ssl-images-amazon.com/images/I/71HZHHDbarL.jpg")
@@ -41,19 +44,23 @@ g4 = Genre.create(name: "Fantasy")
 c1 = Club.create(name: "Mindless Reading", description: "For everyone bored during quarantine", book_id: b2.id, leader_id: u1.id)
 c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", book_id: b1.id, leader_id: u10.id)
 c3 = Club.create(name: "Books on Empowerment", description: "Anything self-help books", book_id: b5.id, leader_id: u10.id)
+c4 = Club.create(name: "Old Books", description: "Anything written before 2000s", book_id: b4.id, leader_id: u11.id)
 
 
 c1.add_user(1)
 c1.add_user(2)
 c1.add_user(3)
+c1.add_user(12)
 c1.add_user(4)
 c2.add_user(1)
 c2.add_user(4)
 c2.add_user(5)
-c2.add_user(6)
+c2.add_user(11)
 c2.add_user(7)
 c2.add_user(8)
 c2.add_user(9)
 c1.add_user(10)
 c2.add_user(10)
 c3.add_user(10)
+c4.add_user(11)
+c4.add_user(12)

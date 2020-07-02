@@ -1,13 +1,15 @@
+require 'googlebooks'
+
 class ClubsController < ApplicationController
     
-    before_action :find_club, only: [:show, :edit, :update, :delete]
+    before_action :find_club, only: [:show, :edit, :update, :destroy]
     before_action :authenticated, only: [:new, :create, :edit, :update, :destroy]
 
     def index
       if logged_in?
         @user = User.find(session[:user_id])
       end
-        @clubs = Club.all
+        @clubs = Club.all.sort_by{|club|club.users.count}.reverse
     end 
 
     def show
@@ -34,9 +36,12 @@ class ClubsController < ApplicationController
     end
 
     def create
-      byebug
-      @club = Club.new(club_params)
-      if @club.save
+      @club = Club.new(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
+      book = club_params[:book_attributes][:title]
+      @club.book = Book.find_or_create(book)
+      if @club.save   
+        @club.add_user(session[:user_id])
+
         redirect_to club_path(@club)
       else
         render :new
@@ -44,9 +49,11 @@ class ClubsController < ApplicationController
     end
     
     def update
-      @club.book.destroy
-      @club.build_book
-      if @club.update(club_params)
+
+      book = club_params[:book_attributes][:title]
+      @club.book = Book.find_or_create(book)
+      if @club.update(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
+
         redirect_to club_path(@club)
       else 
         render :edit
@@ -54,6 +61,12 @@ class ClubsController < ApplicationController
     end
 
     def destroy
+      @club.users.each do |user|
+        @club.remove_user(user.id)
+      end 
+      @club = Club.find(params[:id])
+      @club.destroy
+      redirect_to '/'
     end
 
     private 

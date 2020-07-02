@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :club_memberships
   has_many :clubs, through: :club_memberships
   has_many :books, through: :clubs
-  has_many :lead_clubs, :class_name => "Club", foreign_key: 'leader_id'
+  has_many :lead_clubs, :class_name => "Club", foreign_key: 'leader_id' 
   has_many :comments
 
   validates :username, uniqueness: true
@@ -22,6 +22,5 @@ class User < ApplicationRecord
   def lead_names
     lead_clubs.map{|club|club.name} 
   end
-
 
 end

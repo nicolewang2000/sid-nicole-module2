@@ -1,4 +1,5 @@
-<h1>BOOKCLUB! Home</h1>
+<!--
+<h1>Home</h1>
 
 
 <% if logged_in? %>
@@ -22,4 +23,44 @@
 <%end%>
 </ul>
 <%end%>
+-->
 
+<% if logged_in? %>
+    <label>Your clubs are currently reading:</label>
+        <ul>
+            <% @user.clubs.each do |club| %>
+                <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
+            <%end%>
+        </ul>
+
+    <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%>
+<%else%>
+<!-- Slide Show -->
+<section>
+  <img class="mySlides" src="https://wallpaperaccess.com/full/1761201.jpg"
+  style="width:90%">
+  <img class="mySlides" src="https://www.locogringo.com/sites/default/files/blog-teaser/shutterstock_643434907.jpg"
+  style="width:90%">
+  <img class="mySlides" src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+  style="width:90%">
+</section>
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000);
+}
+</script>
+
+<%end%>
