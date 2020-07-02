@@ -17,15 +17,16 @@
 
 
 <div class="wrapper">
-
+<div>
 <% if logged_in? %>
   
   <%if @club.leader_id == session[:user_id]%>
 
       <!--<%= link_to '<button type="button">Delete club</button>'.html_safe, club_path(@club), method: :delete %>-->
-      <%= button_to "Delete", club_path(@club), method: :delete %>
       <%= link_to '<button type="button">Edit club</button>'.html_safe, edit_club_path(@club), {:class => "no-tufte-underline"} %> 
-  
+      <%= button_to "Delete club", club_path(@club), method: :delete %>
+
+
   <%elsif @club.find_membership(@user.id)%>
 
     <%= form_for @membership do |f| %>
@@ -48,9 +49,6 @@
 <% end %>
 <br><br>
 
-
-
-<div>
 <label>Members:</label>
     <ul>
         <% @club.users.each do |user| %>

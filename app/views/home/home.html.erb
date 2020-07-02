@@ -26,7 +26,8 @@
 -->
 
 <% if logged_in? %>
-    <label>Your clubs are currently reading:</label>
+
+    <h2>Your clubs are currently reading:</h2>
         <ul>
             <% @user.clubs.each do |club| %>
                 <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
