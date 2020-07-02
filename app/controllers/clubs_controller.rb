@@ -9,7 +9,7 @@ class ClubsController < ApplicationController
       if logged_in?
         @user = User.find(session[:user_id])
       end
-        @clubs = Club.all
+        @clubs = Club.all.sort_by{|club|club.users.count}.reverse
     end 
 
     def show

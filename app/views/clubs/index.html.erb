@@ -1,6 +1,26 @@
 <h1>Club Directory</h1>
+<!--
 <ul>
 <%@clubs.each do |club|%>
     <li><%=link_to club.name, club_path(club)%></li>
 <%end%>
 </ul>
+-->
+<div style="overflow-x:auto;">
+<table style="width:90%">
+  <tr>
+    <th>Club</th>
+    <th>Currently Reading</th> 
+    <th>Leader</th> 
+    <th>Member Count</th>
+  </tr>
+  <%@clubs.each do |club|%>
+  <tr>
+    <td><%=link_to club.name, club_path(club)%></td>
+    <td><%=club.book.title%></td> 
+    <td><%=link_to club.leader.full_name, user_path(club.leader_id)%></td>
+    <td><%=club.users.count%></td>
+  </tr>
+  <%end%>
+</table>
+<div>
