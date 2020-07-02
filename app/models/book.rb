@@ -3,11 +3,11 @@ class Book < ApplicationRecord
   has_many :book_genres
   has_many :genres, through: :book_genres
 
-  def self.find_or_create(book)
+  def self.get_book_image(keyword)
     Book.find_or_create_by(
-        title: GoogleBooks.search(book).first.title, 
-        author_name: GoogleBooks.search(book).first.authors,
-        img_url: GoogleBooks.search(book).first.image_link
+        title: GoogleBooks.search(keyword).first.title, 
+        author_name: GoogleBooks.search(keyword).first.authors,
+        img_url: GoogleBooks.search(keyword).first.image_link
     )
   end
 
