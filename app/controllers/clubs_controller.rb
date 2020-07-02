@@ -1,6 +1,8 @@
+require 'googlebooks'
+
 class ClubsController < ApplicationController
     
-    before_action :find_club, only: [:show, :edit, :update, :delete]
+    before_action :find_club, only: [:show, :edit, :update, :destroy]
     before_action :authenticated, only: [:new, :create, :edit, :update, :destroy]
 
     def index
@@ -32,8 +34,11 @@ class ClubsController < ApplicationController
     end
 
     def create
-      @club = Club.new(club_params)
-      if @club.save
+
+      @club = Club.new(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
+      book = club_params[:book_attributes][:title]
+      @club.book = Book.find_or_create(book)
+      if @club.save   
         @club.add_user(session[:user_id])
         redirect_to club_path(@club)
       else
@@ -50,6 +55,12 @@ class ClubsController < ApplicationController
     end
 
     def destroy
+      @club.users.each do |user|
+        @club.remove_user(user.id)
+      end 
+      @club = Club.find(params[:id])
+      @club.destroy
+      redirect_to '/'
     end
 
     private 
