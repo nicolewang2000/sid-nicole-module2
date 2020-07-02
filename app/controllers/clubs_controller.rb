@@ -34,13 +34,13 @@ class ClubsController < ApplicationController
     end
 
     def create
+
       @club = Club.new(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
       book = club_params[:book_attributes][:title]
       @club.book = Book.find_or_create(book)
       if @club.save   
         @club.add_user(session[:user_id])
         redirect_to club_path(@club)
-
       else
         render :new
       end
