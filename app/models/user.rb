@@ -23,6 +23,5 @@ class User < ApplicationRecord
     lead_clubs.map{|club|club.name} 
   end
 
-  
 
 end

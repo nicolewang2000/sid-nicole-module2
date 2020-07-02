@@ -16,6 +16,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    byebug
     #doesn't render anything
     book = Book.create(book_params)
     redirect_to book_path(book)

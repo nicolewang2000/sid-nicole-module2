@@ -30,9 +30,11 @@ class ClubsController < ApplicationController
     end
 
     def edit
+      @genres = Genre.all
     end
 
     def create
+      byebug
       @club = Club.new(club_params)
       if @club.save
         redirect_to club_path(@club)
@@ -55,7 +57,7 @@ class ClubsController < ApplicationController
     private 
 
     def club_params
-      params.require(:club).permit(:name, :description, :leader_id, book_attributes: [:title, :author_name, :img_url])
+      params.require(:club).permit(:name, :description, :leader_id, book_attributes: [:title, :author_name, :img_url, genre_ids: []])
     end
 
     def find_club
