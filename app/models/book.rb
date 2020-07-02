@@ -15,6 +15,15 @@ class Book < ApplicationRecord
     Book.all.map{|book| book.img_url if book.img_url}
   end
 
+  def self.most_popular_genre
+    genres = Book.all.map(&:genres).flatten.map(&:name)
+    genres.max_by {|g| genres.count(g)} 
+  end
+
+  def genres_list
+    self.genres.map(&:name).join(', ')
+  end
+
   # def book_hash
 
   #   Google.search(keyword)
