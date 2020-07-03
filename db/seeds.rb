@@ -16,9 +16,9 @@ Club.reset_pk_sequence
 ClubMembership.destroy_all
 ClubMembership.reset_pk_sequence
 
-u1 = User.create(username: "nicolewang", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('flatiron'))
+u1 = User.create(username: "nicole08", first_name: "Nicole", last_name: "Wang", password_digest: BCrypt::Password.create('flatiron'))
 u2 = User.create(username: "ac19", first_name: "Annabeth", last_name: "Chase", password_digest: BCrypt::Password.create('flatiron'))
-u3 = User.create(username: "bernicew", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('flatiron'))
+u3 = User.create(username: "sussie", first_name: "Susan", last_name: "Colins", password_digest: BCrypt::Password.create('flatiron'))
 u4 = User.create(username: "coffeedad", first_name: "Mac", last_name: "Donald", password_digest: BCrypt::Password.create('flatiron'))
 u5 = User.create(username: "lightning", first_name: "Harry", last_name: "Potter", password_digest: BCrypt::Password.create('flatiron'))
 u6 = User.create(username: "zoehart", first_name: "Zoe", last_name: "Hart", password_digest: BCrypt::Password.create('flatiron'))
@@ -32,7 +32,7 @@ u13 = User.create(username: "flowersforever", first_name: "Chloe", last_name: "J
 u14 = User.create(username: "pikachoo", first_name: "Mark", last_name: "Phillip", password_digest: BCrypt::Password.create('flatiron'))
 u15 = User.create(username: "gossipgirl", first_name: "Ben", last_name: "Fisher", password_digest: BCrypt::Password.create('flatiron'))
 u16 = User.create(username: "z00m", first_name: "Jacob", last_name: "Adams", password_digest: BCrypt::Password.create('flatiron'))
-u17 = User.create(username: "nikki0818", first_name: "Claire", last_name: "Hoffman", password_digest: BCrypt::Password.create('flatiron'))
+u17 = User.create(username: "bernice02", first_name: "Bernice", last_name: "Wang", password_digest: BCrypt::Password.create('flatiron'))
 
 b1 = Book.create(title: "Harry Potter and the Order of the Phoenix", author_name: "J.K. Rowling", img_url: "https://images-na.ssl-images-amazon.com/images/I/91TpLHDnuFL.jpg")
 b2 = Book.create(title: "The Hate You Give", author_name: "Angie Thomas", img_url: "https://images-na.ssl-images-amazon.com/images/I/71HZHHDbarL.jpg")
@@ -41,12 +41,24 @@ b4 = Book.create(title: "To Kill a Mockingbird", author_name: "Harper Lee", img_
 b5 = Book.create(title: "Becoming", author_name: "Michelle Obama", img_url: "https://images-na.ssl-images-amazon.com/images/I/81h2gWPTYJL.jpg")
 b6 = Book.create(title: "Ruby on Rails", author_name: "Michael Hartl", img_url: "https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/cover-web.png")
 
-c1 = Club.create(name: "Quarenteens", description: "For everyone teenager bored during quarantine", leader_id: u1.id, book_id:2)
-c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", leader_id: u10.id, book_id:1)
-c3 = Club.create(name: "Books on Empowerment", description: "Learn to become your best self with self-help books!", leader_id: u2.id, book_id:5)
-c4 = Club.create(name: "Pry Babies!", description: "Learn new skills", leader_id: u12.id, book_id:6)
-c5 = Club.create(name: "Pick Me Up", description: "For anyone who hates sad endings", leader_id: u17.id, book_id:3)
-c6 = Club.create(name: "Through the Lens of History", description: "Whisking you away to the past", leader_id: u11.id, book_id:4)
+c1 = Club.create(name: "Quarenteens", description: "For everyone teenager bored during quarantine", leader_id: u1.id, book_id: b2.id)
+c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", leader_id: u10.id, book_id: b1.id)
+c3 = Club.create(name: "Books on Empowerment", description: "Learn to become your best self with self-help books!", leader_id: u2.id, book_id: b5.id)
+c4 = Club.create(name: "Pry Babies!", description: "Learn new skills", leader_id: u12.id, book_id: b6.id)
+c5 = Club.create(name: "Pick Me Up", description: "For anyone who hates sad endings", leader_id: u17.id, book_id: b3.id)
+c6 = Club.create(name: "Through the Lens of History", description: "Whisking you away to the past", leader_id: u11.id, book_id: b4.id)
+
+g1 = Genre.create(name: "Fiction")
+g2 = Genre.create(name: "Drama")
+g3 = Genre.create(name: "Non-Fiction")
+g4 = Genre.create(name: "Fantasy")
+
+BookGenre.create(book_id: 1, genre_id: 4)
+BookGenre.create(book_id: 2, genre_id: 1)
+BookGenre.create(book_id: 3, genre_id: 4)
+BookGenre.create(book_id: 4, genre_id: 2)
+BookGenre.create(book_id: 5, genre_id: 3)
+BookGenre.create(book_id: 6, genre_id: 3)
 
 c1.add_user(1)
 c1.add_user(2)
