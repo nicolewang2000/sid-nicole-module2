@@ -69,7 +69,9 @@
     <br>
     <img src=<%=@club.book.img_url%>  width="200">
     <br>
-    <label>Genre(s): </label><br>
-    <%=@club.book.genres.map {|genre| genre.name}.join(", ")%>
+    Genre(s):<%=@club.book.genres.map {|genre| genre.name}.join(", ")%><br><br>
+    <%if @club.book.buy_link%>
+      <a href= <%=@club.book.buy_link%> class = "no-tufte-underline"><button type="button">Click to purchase!</button></a>
+    <%end%>
   </div>
 </div>

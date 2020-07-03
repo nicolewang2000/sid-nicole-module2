@@ -11,9 +11,9 @@ class Book < ApplicationRecord
   #   )
   # end
 
-  def buy_link(keyword)
-    GoogleBooks.search(keyword).first.sale_info['buyLink']
-  end
+  # def buy_link(keyword)
+  #   GoogleBooks.search(keyword).first.sale_info['buyLink']
+  # end
 
   def self.all_img_urls
     Book.all.map{|book| book.img_url if book.img_url}

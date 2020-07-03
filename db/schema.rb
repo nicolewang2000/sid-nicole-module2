@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_155930) do
+ActiveRecord::Schema.define(version: 2020_07_03_110922) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "book_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_155930) do
     t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "buy_link"
   end
 
   create_table "club_memberships", force: :cascade do |t|

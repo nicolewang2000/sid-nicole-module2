@@ -17,7 +17,13 @@
   <%@clubs.each do |club|%>
   <tr>
     <td><%=link_to club.name, club_path(club)%></td>
-    <td><%=club.book.title%></td> 
+    <td>
+      <%if club.book.buy_link%>
+          <a href= <%=club.book.buy_link%>><%=club.book.title%></a>
+          <%else%>
+          <%=club.book.title%>
+        <%end%>
+    </td> 
     <td><%=link_to club.leader.full_name, user_path(club.leader_id)%></td>
     <td><%=club.users.count%></td>
   </tr>
