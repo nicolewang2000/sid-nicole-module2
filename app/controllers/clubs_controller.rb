@@ -40,6 +40,7 @@ class ClubsController < ApplicationController
         @club.add_user(session[:user_id])
         redirect_to club_path(@club)
       else
+        flash[:errors]= @club.errors.full_messages
         render :new
       end
     end
@@ -49,6 +50,7 @@ class ClubsController < ApplicationController
       if @club.update(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
         redirect_to club_path(@club)
       else 
+        flash[:errors]= @club.errors.full_messages
         render :edit
     end 
     end
@@ -74,10 +76,7 @@ class ClubsController < ApplicationController
 
     def assign_book
       keyword = club_params[:book_attributes][:title]+ " " +club_params[:book_attributes][:author_name]
-      @club.book = Book.get_book_image(keyword)
-      unless club_params[:book_attributes][:img_url].blank?
-        @club.book.img_url = club_params[:book_attributes][:img_url]
-      end 
+      @club.book = Book.get_book(keyword)
     end
 
 end 

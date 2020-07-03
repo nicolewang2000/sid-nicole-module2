@@ -27,7 +27,13 @@ u8 = User.create(username: "ts1989", first_name: "Taylor", last_name: "Swift", p
 u9 = User.create(username: "demigod", first_name: "Percy", last_name: "Jackson", password_digest: BCrypt::Password.create('lightningthief'))
 u10 = User.create(username: "siddo", first_name: "Sid", last_name: "Hirschman", password_digest: BCrypt::Password.create('sidpassword'))
 u11 = User.create(username: "ruby", first_name: "Ruby", last_name: "Rails", password_digest: BCrypt::Password.create('coding'))
-u11 = User.create(username: "prybabies", first_name: "Rails", last_name: "Ruby", password_digest: BCrypt::Password.create('flatiron'))
+u12 = User.create(username: "prybabies", first_name: "Rails", last_name: "Ruby", password_digest: BCrypt::Password.create('flatiron'))
+u13 = User.create(username: "flowersforever", first_name: "Chloe", last_name: "Jensen", password_digest: BCrypt::Password.create('password'))
+u14 = User.create(username: "pikachoo", first_name: "Mark", last_name: "Phillip", password_digest: BCrypt::Password.create('password'))
+u15 = User.create(username: "gossipgirl", first_name: "Ben", last_name: "Fisher", password_digest: BCrypt::Password.create('password'))
+u16 = User.create(username: "z00m", first_name: "Jacob", last_name: "Adams", password_digest: BCrypt::Password.create('password'))
+u17 = User.create(username: "nikki0818", first_name: "Claire", last_name: "Hoffman", password_digest: BCrypt::Password.create('password'))
+
 
 
 b1 = Book.create(title: "Harry Potter and the Order of the Phoenix", author_name: "J.K. Rowling", img_url: "https://images-na.ssl-images-amazon.com/images/I/91TpLHDnuFL.jpg")
@@ -35,16 +41,20 @@ b2 = Book.create(title: "The Hate You Give", author_name: "Angie Thomas", img_ur
 b3 = Book.create(title: "Children of Blood and Bone", author_name: "Tomi Adeyemi", img_url: "https://prodimage.images-bn.com/pimages/9781250170972_p0_v5_s1200x630.jpg")
 b4 = Book.create(title: "To Kill a Mockingbird", author_name: "Harper Lee", img_url: "https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg")
 b5 = Book.create(title: "Becoming", author_name: "Michelle Obama", img_url: "https://images-na.ssl-images-amazon.com/images/I/81h2gWPTYJL.jpg")
+b6 = Book.create(title: "Ruby on Rails", author_name: "Michael Hartl", img_url: "https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_4th_edition/images/cover-web.png")
+
 
 g1 = Genre.create(name: "Fiction")
 g2 = Genre.create(name: "Biography")
 g3 = Genre.create(name: "Non-Fiction")
 g4 = Genre.create(name: "Fantasy")
 
-c1 = Club.create(name: "Mindless Reading", description: "For everyone bored during quarantine", book_id: b2.id, leader_id: u1.id)
+c1 = Club.create(name: "Quarenteens", description: "For everyone teenager bored during quarantine", book_id: b2.id, leader_id: u1.id)
 c2 = Club.create(name: "Platform 9 3/4", description: "For everyone who loves a good fantasy", book_id: b1.id, leader_id: u10.id)
-c3 = Club.create(name: "Books on Empowerment", description: "Anything self-help books", book_id: b5.id, leader_id: u10.id)
-c4 = Club.create(name: "Old Books", description: "Anything written before 2000s", book_id: b4.id, leader_id: u11.id)
+c3 = Club.create(name: "Books on Empowerment", description: "Learn to become your best self with self-help books!", book_id: b5.id, leader_id: u2.id)
+c4 = Club.create(name: "Pry Babies!", description: "Learn new skills", book_id: b6.id, leader_id: u12.id)
+c5 = Club.create(name: "Pick Me Up", description: "For anyone who hates sad endings", book_id: b3.id, leader_id: u17.id)
+c6 = Club.create(name: "Through the Lens of History", description: "Whisking you away to the past", book_id: b4.id, leader_id: u11.id)
 
 
 c1.add_user(1)
@@ -52,6 +62,8 @@ c1.add_user(2)
 c1.add_user(3)
 c1.add_user(12)
 c1.add_user(4)
+c1.add_user(10)
+
 c2.add_user(1)
 c2.add_user(4)
 c2.add_user(5)
@@ -59,8 +71,26 @@ c2.add_user(11)
 c2.add_user(7)
 c2.add_user(8)
 c2.add_user(9)
-c1.add_user(10)
 c2.add_user(10)
+
 c3.add_user(10)
+c3.add_user(13)
+c3.add_user(14)
+
 c4.add_user(11)
 c4.add_user(12)
+c4.add_user(15)
+c4.add_user(16)
+
+c5.add_user(17)
+c5.add_user(6)
+c5.add_user(7)
+c5.add_user(8)
+c5.add_user(9)
+
+c6.add_user(10)
+c6.add_user(2)
+c6.add_user(4)
+c6.add_user(11)
+c6.add_user(12)
+c6.add_user(15)
