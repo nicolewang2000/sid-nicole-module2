@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SidNicoleModule2</title>
+
+    <title>BOOKCLUB!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+   <link rel="stylesheet" href="https://edwardtufte.github.io/tufte-css/tufte.css" type="text/css">  
+
+   <div class="header">
+    <p style="font-size:60px; padding:10px;">BOOKCLUB!</p>
+  </div>
+
   </head>
 
   <body>
+  
+    <nav>
+
+      <%= link_to "Home", '/'%> 
+      <%= link_to "Browse Book Clubs", clubs_path%>
+      <%= link_to "Create New Book Club", new_club_path%>
+      
+
+
+     
+
+      <% if logged_in? %>
+      <%=link_to "Edit Your Account", edit_user_path(session[:user_id])%>
+      <a>Welcome <%= current_user.full_name %> </a>
+      <%=link_to "Log Out", logout_path, method: :delete%>
+      
+      <% else %>
+      <%=link_to "Create an Account", signup_path%>
+      <a>You are not logged in!</a> 
+      <%=link_to "Log In", login_path%>
+      
+
+      <%end%>
+
+      
+
+    </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,95 @@
+
+<% if logged_in? %>
+
+<div>
+⠀ <!-- you can't see it, but there's an invisible character to the left of this message. don't delete it, it's keeping everything inline.-->
+</div>
+<div class="wrapper">
+    <div>
+    <h2>Welcome, <%=@user.full_name %>!</h2>
+    <h4>Your clubs are currently reading:</h4>
+        <ul>
+            <% @user.clubs.each do |club| %>
+                <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
+            <%end%>
+        </ul>
+
+    <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%> •  <a href="/analytics">Analytics</a>
+ </div>
+<!-- Slide Show -->
+    <div>
+        <section>
+        <% @user.books.all_img_urls.each do |img_url|%>
+        <img class="mySlides" src=<%= img_url%> style="width:40%">
+        <%end%>
+        </section>
+
+
+        <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 3000);
+        }
+        </script>
+    </div>
+</div>
+
+
+<%else%>
+
+<div>
+⠀ <!-- you can't see it, but there's an invisible character to the left of this message. don't delete it, it's keeping everything inline.-->
+</div>
+<div class="wrapper">
+    <div>
+        <h2>BOOKCLUB! is a platform <br> for books and community.</h2>
+        <label>Recent clubs:</label>
+        <ul>
+        <% @clubs.last_num_clubs(5).each do |club| %>
+        <li><%= link_to club.name, club_path(club)%> </li>
+        <%end%>
+        </ul>
+        <h5><a href="/analytics">Analytics</a></h5>
+    </div>
+<!-- Slide Show -->
+    <div>
+        <section>
+        <% @books.all_img_urls.each do |img_url|%>
+        <img class="mySlides" src=<%= img_url%> style="width:40%">
+        <%end%>
+        </section>
+
+
+        <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 3000);
+        }
+        </script>
+    </div>
+</div>
+
+
+<%end%>

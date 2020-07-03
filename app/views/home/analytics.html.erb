@@ -1,0 +1,17 @@
+<h2>Analytics</h2>
+
+<label>BOOKCLUB! currently has <%= @users.length %> users in <%= @clubs.length %> clubs led by <%= @clubs.num_of_leaders %> users,
+with an average of <%= @clubs.avg_num_of_users%> members per club.</label>
+<br><br>
+<label>In total, <%= @books.length %> books have been read/are being read in clubs on BOOKCLUB!</label>
+<br><br>
+<label>The most popular genre on BOOKCLUB! is <%= @books.most_popular_genre%>.</label>
+<br><br>
+<label>The largest club on BOOKCLUB! is <%= @clubs.largest_club.name%> with <%= @clubs.largest_club_count%> members.</label>
+
+<!-- analytics ideas: -->
+
+<!-- average number of clubs each leader leads -->
+<!-- average number of comments on a club -->
+<!-- user who's commented the most -->
+<!-- 'you are the nth user of the site' -->

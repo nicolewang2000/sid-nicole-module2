@@ -1,0 +1,77 @@
+<h1><%= @club.name %></h1>
+<h2><%= @club.description%></h2>
+
+<!--<label>Current Book:</label>
+<%=@club.book.title%> by <%=@club.book.author_name%> <br>
+
+<label>Description:</label>
+<%=@club.description %><br>-->
+
+
+
+
+
+
+<div class="wrapper2">
+<div>
+<label>Leader:</label>
+<%=link_to @club.leader.full_name, user_path(@club.leader)%> <br>
+<% if logged_in? %>
+  
+  <%if @club.leader_id == session[:user_id]%>
+
+      <!--<%= link_to '<button type="button">Delete club</button>'.html_safe, club_path(@club), method: :delete %>-->
+      <%= link_to '<button type="button">Edit club</button>'.html_safe, edit_club_path(@club), {:class => "no-tufte-underline"} %> 
+      <%= button_to "Delete club", club_path(@club), method: :delete %>
+
+
+  <%elsif @club.find_membership(@user.id)%>
+
+    <%= form_for @membership do |f| %>
+      <%= f.hidden_field :club_id, value: @club.id%>
+      <%= f.hidden_field :user_id, value: @user.id%>
+      <%= f.submit "Leave Club"%>
+    <%end%>
+
+
+  <%else%>
+    <%= form_for @membership do |f| %>
+      <%= f.hidden_field :club_id, value: @club.id%>
+      <%= f.hidden_field :user_id, value: @user.id%>
+      <%= f.submit "Join Club"%>
+    <%end%>
+  <%end%>
+
+<% else %>
+<%= link_to "Log in or sign up to join this club", login_path, {:class => "no-tufte-underline"}%>
+<% end %>
+<br><br>
+
+<label>Members:</label>
+    <ul>
+        <% @club.users.each do |user| %>
+            <li><%=link_to user.full_name, user_path(user)%></li>
+    <%end%>
+  </ul>
+
+<% if logged_in? && @club.find_membership(@user.id) %>
+    <label>Thoughts:</label><br>
+      <%= render @club.comments %>
+      <br>
+    <label>Leave your thoughts</label>
+     <%= render 'comments/form' %>
+<%end%>
+</div>
+
+  <div>
+    <label>Current book: </label><br>
+    <%= @club.book.title %> by <%= @club.book.author_name %>
+    <br>
+    <img src=<%=@club.book.img_url%>  width="200">
+    <br>
+    Genre(s):<%=@club.book.genres.map {|genre| genre.name}.join(", ")%><br><br>
+    <%if @club.book.buy_link%>
+      <a href= <%=@club.book.buy_link%> class = "no-tufte-underline"><button type="button">Click to purchase!</button></a>
+    <%end%>
+  </div>
+</div>

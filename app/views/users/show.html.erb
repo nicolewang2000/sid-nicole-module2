@@ -1,2 +1,32 @@
 <h1><%=@user.full_name%></h1>
-<h1><%=@user.username%></h1>
+<h3>Username: <%=@user.username%></h3>
+
+<br>
+
+<label>Leader of:</label>
+<ul>
+<%@user.lead_clubs.each do |club|%>
+    <li><%=link_to club.name, club_path(club)%></li>
+<%end%>
+</ul>
+
+<br>
+
+<label> Member of: </label>
+<!--<table>
+    <tr>
+        <th>Club Name</th>
+        <th>Currently Reading</th>
+    </tr>
+    <% @user.clubs.each do |club|%>
+    <tr>
+        <td><%=link_to club.name, club_path(club)%></td>
+        <td><%=club.book.title%></td>
+    </tr>
+    <%end%>
+</table>-->
+<ul>
+<%@user.clubs.each do |club|%>
+    <li><%=link_to club.name, club_path(club)%></li>
+<%end%>
+</ul>

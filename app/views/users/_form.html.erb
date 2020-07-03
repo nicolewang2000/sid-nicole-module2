@@ -1,0 +1,23 @@
+<%if flash[:errors]%>
+    <ul>
+        <%flash[:errors].each do |error|%>
+          <li><%=error%></li>
+        <%end%>
+    </ul>
+<%end%>
+
+<div class="bg-img">
+<%= form_for @user do |f| %>
+    <%=f.label :first_name%><br>
+    <%=f.text_field :first_name%><br>
+    <%=f.label :last_name%><br>
+    <%=f.text_field :last_name%><br>
+    <%=f.label :username%><br>
+    <%=f.text_field :username%><br>
+    <%=f.label :password%><br>
+    <%=f.password_field :password%><br>
+    <%=f.label :password_confirmation%><br>
+    <%=f.password_field :password_confirmation%><br><br>
+    <%=f.submit%>
+<% end %>
+</div>

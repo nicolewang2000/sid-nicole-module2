@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_173929) do
+ActiveRecord::Schema.define(version: 2020_07_03_110922) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "book_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_06_29_173929) do
     t.string "img_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "buy_link"
   end
 
   create_table "club_memberships", force: :cascade do |t|
@@ -39,6 +40,16 @@ ActiveRecord::Schema.define(version: 2020_06_29_173929) do
     t.text "description"
     t.integer "leader_id"
     t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "club_id"
+    t.string "integer"
+    t.string "content"
+    t.string "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,1 +1,26 @@
+<%if flash[:errors]%>
+    <ul>
+        <%flash[:errors].each do |error|%>
+          <li><%=error%></li>
+        <%end%>
+    </ul>
+<%end%>
+
 <%=form_for @club do |f|%>
+    <%=f.label :club_name%><br>
+    <%=f.text_field :name%><br>
+    <%=f.label :club_description%><br>
+    <%=f.text_area :description%><br>
+    <%=f.hidden_field :leader_id, value: session[:user_id]%>
+    <%=f.fields_for :book do |b| %>
+            <%= b.label :book_title %><br>
+            <%= b.text_field :title %><br>
+            <%= b.label :author_name %><br>
+            <%= b.text_field :author_name %><br>
+            <%= b.hidden_field :img_url%><br><br>
+           <!--<%= b.label "Direct URL to book cover image" %><br>
+            <%= b.text_field :img_url, placeholder: "optional"%><br><br>-->
+	<%end%>
+    <%=f.submit%>
+<%end%>
+
