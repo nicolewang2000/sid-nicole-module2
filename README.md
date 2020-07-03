@@ -6,7 +6,7 @@ BOOKCLUB! is a simple web-based platform for creating and joining book clubs.
 
 * BOOKCLUB! runs on Ruby 2.6.1 and Rails 6.0.3.2.
 
-* If you would like to run this on your local Rails server: fork/clone, `bundle install`, `rails db:seed` to seed the database with some sample users and groups, then `rails s` to start the local server.
+* If you would like to run this on your local Rails server: fork/clone, `bundle install`, `rails db:migrate`, `rails db:seed` to seed the database with some sample users and groups, then `rails s` to start the local server.
 
 ## What's in the box
 
