@@ -13,10 +13,11 @@ class Club < ApplicationRecord
     Book.find_or_create_by(
         title: GoogleBooks.search(keyword).first.title, 
         author_name: GoogleBooks.search(keyword).first.authors,
-        img_url: GoogleBooks.search(keyword).first.image_link
+        img_url: GoogleBooks.search(keyword).first.image_link,
+        buy_link: GoogleBooks.search(keyword).first.sale_info['buyLink']
     )
   end
-  
+
   def find_membership(user_id)
     ClubMembership.find_by(user_id: user_id, club_id: self.id)
   end
