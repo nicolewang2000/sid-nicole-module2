@@ -1,11 +1,8 @@
 <h1><%= @club.name %></h1>
 <h2><%= @club.description%></h2>
 
-
 <!--<label>Current Book:</label>
 <%=@club.book.title%> by <%=@club.book.author_name%> <br>
-
-
 
 <label>Description:</label>
 <%=@club.description %><br>-->
@@ -67,9 +64,9 @@
 </div>
 
   <div>
-    <label>Current book: <%= @club.book.title %> by <%= @club.book.author_name %></label>
+    <label>Current book: </label><br>
+    <%= @club.book.title %> by <%= @club.book.author_name %>
     <br>
-
     <img src=<%=@club.book.img_url%>  width="200">
   </div>
 </div>

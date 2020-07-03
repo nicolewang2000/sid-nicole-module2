@@ -35,8 +35,7 @@ class ClubsController < ApplicationController
 
     def create
       @club = Club.new(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
-      book = club_params[:book_attributes][:title]
-      @club.book = Book.find_or_create(book)
+      assign_book
       if @club.save   
         @club.add_user(session[:user_id])
         redirect_to club_path(@club)
@@ -46,8 +45,7 @@ class ClubsController < ApplicationController
     end
     
     def update
-      book = club_params[:book_attributes][:title]
-      @club.book = Book.find_or_create(book)
+      assign_book
       if @club.update(name: club_params[:name], description:club_params[:description], leader_id: club_params[:leader_id])
         redirect_to club_path(@club)
       else 
@@ -73,4 +71,13 @@ class ClubsController < ApplicationController
     def find_club
       @club = Club.find(params[:id])
     end
+
+    def assign_book
+      keyword = club_params[:book_attributes][:title]+ " " +club_params[:book_attributes][:author_name]
+      @club.book = Book.get_book_image(keyword)
+      unless club_params[:book_attributes][:img_url].blank?
+        @club.book.img_url = club_params[:book_attributes][:img_url]
+      end 
+    end
+
 end 
