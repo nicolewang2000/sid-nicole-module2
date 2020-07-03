@@ -1,6 +1,11 @@
 
 <% if logged_in? %>
 
+<div>
+⠀ <!-- you can't see it, but there's an invisible character to the left of this message. don't delete it, it's keeping everything inline.-->
+</div>
+<div class="wrapper">
+    <div>
     <h2>Welcome, <%=@user.full_name %>!</h2>
     <h4>Your clubs are currently reading:</h4>
         <ul>
@@ -10,6 +15,35 @@
         </ul>
 
     <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%> •  <a href="/analytics">Analytics</a>
+ </div>
+<!-- Slide Show -->
+    <div>
+        <section>
+        <% @user.books.all_img_urls.each do |img_url|%>
+        <img class="mySlides" src=<%= img_url%> style="width:40%">
+        <%end%>
+        </section>
+
+
+        <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 3000);
+        }
+        </script>
+    </div>
+</div>
 
 
 <%else%>
