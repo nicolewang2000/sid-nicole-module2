@@ -10,14 +10,15 @@
 <label>Description:</label>
 <%=@club.description %><br>-->
 
-<label>Leader:</label>
-<%=link_to @club.leader.full_name, user_path(@club.leader)%> 
 
 
 
 
-<div class="wrapper">
+
+<div class="wrapper2">
 <div>
+<label>Leader:</label>
+<%=link_to @club.leader.full_name, user_path(@club.leader)%> <br>
 <% if logged_in? %>
   
   <%if @club.leader_id == session[:user_id]%>

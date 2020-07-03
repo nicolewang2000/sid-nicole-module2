@@ -1,8 +1,5 @@
-<!--
-<h1>Home</h1>
+<!--<% if logged_in? %>
 
-
-<% if logged_in? %>
 <label>Your clubs are currently reading:</label>
 <ul>
 <% @user.clubs.each do |club| %>
@@ -16,7 +13,7 @@
 <%= link_to "Browse Book Clubs", clubs_path%>
 <%else%>
 
-<label>All clubs:</label>
+<h2>All clubs:</h2>
 <ul>
 <% @clubs.each do |club| %>
 <li><%= link_to club.name, club_path(club)%> </li>
@@ -27,7 +24,8 @@
 
 <% if logged_in? %>
 
-    <h2>Your clubs are currently reading:</h2>
+    <h2>Welcome, <%=@user.full_name %>!</h2>
+    <h4>Your clubs are currently reading:</h4>
         <ul>
             <% @user.clubs.each do |club| %>
                 <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
@@ -35,31 +33,50 @@
         </ul>
 
     <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%>
+
 <%else%>
+
+<div>
+⠀ <!-- you can't see it, but there's an invisible character to the left of this message. don't delete it, it's keeping everything inline.-->
+</div>
+<div class="wrapper">
+    <div>
+        <h2>BOOKCLUB! is a platform <br> for books and community.</h2>
+        <label>Recent clubs:</label>
+        <ul>
+        <% @clubs.each do |club| %>
+        <li><%= link_to club.name, club_path(club)%> </li>
+        <%end%>
+        </ul>
+    </div>
 <!-- Slide Show -->
+    <div>
+        <section>
+        <% @books.all_img_urls.each do |img_url|%>
+        <img class="mySlides" src=<%= img_url%> style="width:40%">
+        <%end%>
+        </section>
 
-<section>
-  <% @books.all_img_urls.each do |img_url|%>
-  <img class="mySlides" src=<%= img_url%> style="width:200px">
-  <%end%>
-</section>
 
-<script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
+        <script>
+        // Automatic Slideshow - change image every 3 seconds
+        var myIndex = 0;
+        carousel();
 
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 3000);
-}
-</script>
+        function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 3000);
+        }
+        </script>
+    </div>
+</div>
+
 
 <%end%>

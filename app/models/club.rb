@@ -32,4 +32,16 @@ class Club < ApplicationRecord
     Club.all.map{|club| club.number_of_users}.sum / Club.all.count
   end
 
+  def self.num_of_leaders
+    Club.all.map{|club| club.leader_id}.uniq.length
+  end
+
+  def self.largest_club
+    Club.all.sort_by{|club| club.users.length}.last
+  end
+
+  def self.largest_club_count
+    Club.largest_club.users.count
+  end
+
 end

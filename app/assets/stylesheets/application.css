@@ -16,11 +16,18 @@
 
  ul {
   list-style-type: square;
-}
+ }
 
   .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 4fr;
+    grid-column-gap: 1px;
+
+  }
+
+  .wrapper2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     grid-column-gap: 1px;
 
   }
@@ -33,7 +40,7 @@
   nav a {    
     display: block;  
     float: left;
-    padding-top: 20px;
+    padding-top: 0px;
     padding-right: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
