@@ -44,4 +44,8 @@ class Club < ApplicationRecord
     Club.largest_club.users.count
   end
 
+  def self.last_num_clubs(num)
+    Club.all.last(num)
+  end
+
 end

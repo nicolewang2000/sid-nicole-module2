@@ -1,26 +1,3 @@
-<!--<% if logged_in? %>
-
-<label>Your clubs are currently reading:</label>
-<ul>
-<% @user.clubs.each do |club| %>
-
-    <li><%= link_to club.name, club_path(club)%> - <%= club.book.title%></li>
-
-<%end%>
-</ul>
-
-<%= link_to "Create New Book Club", new_club_path%> •
-<%= link_to "Browse Book Clubs", clubs_path%>
-<%else%>
-
-<h2>All clubs:</h2>
-<ul>
-<% @clubs.each do |club| %>
-<li><%= link_to club.name, club_path(club)%> </li>
-<%end%>
-</ul>
-<%end%>
--->
 
 <% if logged_in? %>
 
@@ -32,7 +9,8 @@
             <%end%>
         </ul>
 
-    <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%>
+    <%= link_to "Create New Book Club", new_club_path%> • <%= link_to "Browse Book Clubs", clubs_path%> •  <a href="/analytics">Analytics</a>
+
 
 <%else%>
 
@@ -44,10 +22,11 @@
         <h2>BOOKCLUB! is a platform <br> for books and community.</h2>
         <label>Recent clubs:</label>
         <ul>
-        <% @clubs.each do |club| %>
+        <% @clubs.last_num_clubs(5).each do |club| %>
         <li><%= link_to club.name, club_path(club)%> </li>
         <%end%>
         </ul>
+        <h5><a href="/analytics">Analytics</a></h5>
     </div>
 <!-- Slide Show -->
     <div>
