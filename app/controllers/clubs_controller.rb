@@ -76,7 +76,8 @@ class ClubsController < ApplicationController
 
     def assign_book
       keyword = club_params[:book_attributes][:title]+ " " +club_params[:book_attributes][:author_name]
-      @club.book = Book.get_book(keyword)
+      @club.book = @club.get_book(keyword)
+      @club.book.genres << Genre.find_or_create_by(name: GoogleBooks.search(keyword).first.categories)
     end
 
 end 

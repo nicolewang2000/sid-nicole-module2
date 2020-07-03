@@ -9,9 +9,14 @@ class Club < ApplicationRecord
   validates :name, presence: true
   validates_associated :book, presence: true
 
-  # validates :book_id, presence: true
-  # validates :leader_id, presence: true
-
+  def get_book(keyword)
+    Book.find_or_create_by(
+        title: GoogleBooks.search(keyword).first.title, 
+        author_name: GoogleBooks.search(keyword).first.authors,
+        img_url: GoogleBooks.search(keyword).first.image_link
+    )
+  end
+  
   def find_membership(user_id)
     ClubMembership.find_by(user_id: user_id, club_id: self.id)
   end
