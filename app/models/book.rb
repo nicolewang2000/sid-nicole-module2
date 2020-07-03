@@ -3,17 +3,6 @@ class Book < ApplicationRecord
   has_many :book_genres
   has_many :genres, through: :book_genres
 
-  # def self.get_book(keyword)
-  #   Book.find_or_create_by(
-  #       title: GoogleBooks.search(keyword).first.title, 
-  #       author_name: GoogleBooks.search(keyword).first.authors,
-  #       img_url: GoogleBooks.search(keyword).first.image_link
-  #   )
-  # end
-
-  # def buy_link(keyword)
-  #   GoogleBooks.search(keyword).first.sale_info['buyLink']
-  # end
 
   def self.all_img_urls
     Book.all.map{|book| book.img_url if book.img_url}
