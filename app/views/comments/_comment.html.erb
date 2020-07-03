@@ -1,5 +1,5 @@
 <%= comment.user.full_name %> : <%= comment.content %> <br> (<%= time_ago_in_words(comment.created_at)%> ago)
-<% if comment.user_id == session[:user_id]%>
+<% if comment.user_id == session[:user_id] || session[:user_id] == @club.leader_id %>
    <%= button_to "Delete", club_comment_path(@club, comment), method: :delete %>
    <!--<%= link_to 'Delete', club_comment_path(@club, comment), data: { method: :delete } %>-->
 <%end%>
