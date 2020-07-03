@@ -74,10 +74,7 @@ class ClubsController < ApplicationController
 
     def assign_book
       keyword = club_params[:book_attributes][:title]+ " " +club_params[:book_attributes][:author_name]
-      @club.book = Book.get_book_image(keyword)
-      unless club_params[:book_attributes][:img_url].blank?
-        @club.book.img_url = club_params[:book_attributes][:img_url]
-      end 
+      @club.book = Book.get_book(keyword)
     end
 
 end 

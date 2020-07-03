@@ -7,6 +7,8 @@ class Club < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true
+  validates_associated :book, presence: true
+
   # validates :book_id, presence: true
   # validates :leader_id, presence: true
 
