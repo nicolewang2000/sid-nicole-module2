@@ -34,8 +34,6 @@ u15 = User.create(username: "gossipgirl", first_name: "Ben", last_name: "Fisher"
 u16 = User.create(username: "z00m", first_name: "Jacob", last_name: "Adams", password_digest: BCrypt::Password.create('flatiron'))
 u17 = User.create(username: "nikki0818", first_name: "Claire", last_name: "Hoffman", password_digest: BCrypt::Password.create('flatiron'))
 
-
-
 b1 = Book.create(title: "Harry Potter and the Order of the Phoenix", author_name: "J.K. Rowling", img_url: "https://images-na.ssl-images-amazon.com/images/I/91TpLHDnuFL.jpg")
 b2 = Book.create(title: "The Hate You Give", author_name: "Angie Thomas", img_url: "https://images-na.ssl-images-amazon.com/images/I/71HZHHDbarL.jpg")
 b3 = Book.create(title: "Children of Blood and Bone", author_name: "Tomi Adeyemi", img_url: "https://prodimage.images-bn.com/pimages/9781250170972_p0_v5_s1200x630.jpg")
